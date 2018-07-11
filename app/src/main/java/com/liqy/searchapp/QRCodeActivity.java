@@ -2,10 +2,10 @@ package com.liqy.searchapp;
 
 import android.Manifest;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -21,7 +21,7 @@ import pub.devrel.easypermissions.EasyPermissions;
 /**
  * 没有权限APP 直接Crash
  */
-public class QRCodeActivity extends AppCompatActivity implements EasyPermissions.PermissionCallbacks , QRCodeView.Delegate{
+public class QRCodeActivity extends AppCompatActivity implements EasyPermissions.PermissionCallbacks, QRCodeView.Delegate {
 
     //定义静态常量
     private static final int REQUEST_CODE_QRCODE_PERMISSIONS = 1;
@@ -33,8 +33,8 @@ public class QRCodeActivity extends AppCompatActivity implements EasyPermissions
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_qrcode);
 
-        Button permission=(Button)findViewById(R.id.btn_permission);
-
+        //生成二维码
+        Button permission = (Button) findViewById(R.id.btn_permission);
         permission.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -43,17 +43,31 @@ public class QRCodeActivity extends AppCompatActivity implements EasyPermissions
             }
         });
 
-        Button btn_scan=(Button)findViewById(R.id.btn_scan);
+        //扫描二维码
+        Button btn_scan = (Button) findViewById(R.id.btn_scan);
         btn_scan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mZXingView.startCamera(); // 打开后置摄像头开始预览，但是并未开始识别
-//        mZXingView.startCamera(Camera.CameraInfo.CAMERA_FACING_FRONT); // 打开前置摄像头开始预览，但是并未开始识别
+        //mZXingView.startCamera(Camera.CameraInfo.CAMERA_FACING_FRONT); // 打开前置摄像头开始预览，但是并未开始识别
                 mZXingView.startSpotAndShowRect(); // 显示扫描框，并且延迟0.5秒后开始识别
             }
         });
 
-        mZXingView=(ZXingView)findViewById(R.id.zxingview);
+        //生成二维码
+        Button btn_generate = (Button) findViewById(R.id.btn_generate);
+        btn_generate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent=new Intent(QRCodeActivity.this,GenerateActivity.class);
+                startActivity(intent);
+
+            }
+        });
+
+        //扫码控件
+        mZXingView = (ZXingView) findViewById(R.id.zxingview);
         mZXingView.setDelegate(this);//注册接口
 
     }
@@ -61,7 +75,7 @@ public class QRCodeActivity extends AppCompatActivity implements EasyPermissions
     @Override
     protected void onStart() {
         super.onStart();
-      //此处点击按钮启动
+        //此处点击按钮启动
     }
 
     @Override
@@ -80,6 +94,7 @@ public class QRCodeActivity extends AppCompatActivity implements EasyPermissions
 
     /**
      * Activity 回调方法
+     *
      * @param requestCode
      * @param resultCode
      * @param data
@@ -92,6 +107,7 @@ public class QRCodeActivity extends AppCompatActivity implements EasyPermissions
 
     /**
      * 重写此方法权限回调方法
+     *
      * @param requestCode
      * @param permissions
      * @param grantResults
@@ -119,7 +135,7 @@ public class QRCodeActivity extends AppCompatActivity implements EasyPermissions
      * 执行权限请求
      */
     @AfterPermissionGranted(REQUEST_CODE_QRCODE_PERMISSIONS)
-    private void requestCodeQRCodePermissions(){
+    private void requestCodeQRCodePermissions() {
 
         //权限数组 摄像头 存储卡（自己配置的权限在清单文件中）
         String[] perms = {Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE};
@@ -134,7 +150,7 @@ public class QRCodeActivity extends AppCompatActivity implements EasyPermissions
     public void onScanQRCodeSuccess(String result) {
         Log.i("ScanQRCode", "result:" + result);
         //TODO 处理扫码结果，跳转新页面
-        Toast.makeText(QRCodeActivity.this,result,Toast.LENGTH_SHORT).show();
+        Toast.makeText(QRCodeActivity.this, result, Toast.LENGTH_SHORT).show();
         mZXingView.startSpot(); // 延迟0.5秒后开始识别
     }
 

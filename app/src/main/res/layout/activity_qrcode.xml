@@ -19,6 +19,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
+    <Button
+        android:id="@+id/btn_generate"
+        android:text="生成二维码"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
     <cn.bingoogolapple.qrcode.zxing.ZXingView
         android:id="@+id/zxingview"
         android:layout_width="match_parent"
