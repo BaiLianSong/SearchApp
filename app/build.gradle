@@ -30,4 +30,10 @@ dependencies {
 
     implementation project(path: ':volley')
 
+    implementation 'pub.devrel:easypermissions:1.2.0'
+
+    implementation 'cn.bingoogolapple:bga-qrcode-zxing:1.2.5'
+
+
+
 }
