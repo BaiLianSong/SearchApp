@@ -133,12 +133,9 @@ public class QRCodeActivity extends AppCompatActivity implements EasyPermissions
     @Override
     public void onScanQRCodeSuccess(String result) {
         Log.i("ScanQRCode", "result:" + result);
-        //TODO 处理扫码结果
-
+        //TODO 处理扫码结果，跳转新页面
         Toast.makeText(QRCodeActivity.this,result,Toast.LENGTH_SHORT).show();
-
         mZXingView.startSpot(); // 延迟0.5秒后开始识别
-
     }
 
     @Override
