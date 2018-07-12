@@ -15,7 +15,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".QRCodeActivity">
+        <activity android:name="mvp.view.ShopListActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,7 +23,8 @@
             </intent-filter>
         </activity>
         <!-- <activity android:name=".QRCodeActivity"></activity> -->
-        <activity android:name=".GenerateActivity"></activity>
+        <!--<activity android:name=".GenerateActivity" />-->
+        <!--<activity android:name="mvp.view.ShopListActivity"></activity>-->
     </application>
 
 </manifest>

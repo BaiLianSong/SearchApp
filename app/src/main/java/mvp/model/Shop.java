@@ -10,7 +10,7 @@ public class Shop {
     public String name;
     public int month_sales;
     public String month_sales_tip;
-    public int wm_poi_score;
+    public float wm_poi_score;
     public double delivery_score;
     public double quality_score;
     public double pack_score;
@@ -35,4 +35,38 @@ public class Shop {
     public int __v;
     public String created_at;
 
+    @Override
+    public String toString() {
+        return "Shop{" +
+                "_id='" + _id + '\'' +
+                ", id=" + id +
+                ", name='" + name + '\'' +
+                ", month_sales=" + month_sales +
+                ", month_sales_tip='" + month_sales_tip + '\'' +
+                ", wm_poi_score=" + wm_poi_score +
+                ", delivery_score=" + delivery_score +
+                ", quality_score=" + quality_score +
+                ", pack_score=" + pack_score +
+                ", food_score=" + food_score +
+                ", delivery_time_tip='" + delivery_time_tip + '\'' +
+                ", third_category='" + third_category + '\'' +
+                ", pic_url='" + pic_url + '\'' +
+                ", shopping_time_start='" + shopping_time_start + '\'' +
+                ", shopping_time_end='" + shopping_time_end + '\'' +
+                ", min_price=" + min_price +
+                ", min_price_tip='" + min_price_tip + '\'' +
+                ", shipping_fee=" + shipping_fee +
+                ", shipping_fee_tip='" + shipping_fee_tip + '\'' +
+                ", bulletin='" + bulletin + '\'' +
+                ", address='" + address + '\'' +
+                ", call_center='" + call_center + '\'' +
+                ", distance='" + distance + '\'' +
+                ", average_price_tip='" + average_price_tip + '\'' +
+                ", comment_number=" + comment_number +
+                ", lng='" + lng + '\'' +
+                ", lat='" + lat + '\'' +
+                ", __v=" + __v +
+                ", created_at='" + created_at + '\'' +
+                '}';
+    }
 }
