@@ -5,6 +5,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.google.gson.Gson;
+import com.liqy.searchapp.VolleyUtil;
 
 /**
  * 实现模型接口
@@ -36,6 +37,8 @@ public class ShopTask implements IShopTask{
                 callBack.failed(error.getMessage());
             }
         });
+
+        VolleyUtil.getVolley().addToQueue(request);
 
     }
 
